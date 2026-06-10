@@ -45,3 +45,17 @@ To build modifications and test this UI layout ecosystem locally:
 ```bash
 git clone [https://github.com/Bhavishya-Singh-IITD/atelier-frontend.git](https://github.com/Bhavishya-Singh-IITD/atelier-frontend.git)
 cd atelier-frontend
+
+atelier/
+├── index.html          ← Homepage
+├── shop.html           ← Product listing
+├── product.html        ← Product detail
+├── sell.html           ← Artist onboarding
+├── about.html          ← About page
+├── signin.html         ← Auth (noindex)
+├── robots.txt          ← Crawler rules
+├── sitemap.xml         ← For Google Search Console
+├── css/
+│   └── styles.css      ← All styles (shared)
+└── js/
+    └── script.js       ← Light interactions
