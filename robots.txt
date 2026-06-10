@@ -1,0 +1,15 @@
+# Atelier - Robots.txt
+# https://atelier.example.com
+
+User-agent: *
+Allow: /
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+Disallow: /signin.html
+
+# Sitemap
+Sitemap: https://atelier.example.com/sitemap.xml
+
+# Crawl-delay (optional, polite default)
+Crawl-delay: 1

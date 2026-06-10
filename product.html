@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail | Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Albert+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <script src="js/header.js"></script>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="max-width:1280px;margin:24px auto 0;padding:0 24px;">
+      <a href="index.html">Home</a> / <a href="shop.html">Gallery</a> / <span id="breadcrumb-name">Loading...</span>
+    </nav>
+
+    <article class="product-detail">
+      <aside class="product-thumbs" id="product-thumbs-container" aria-label="Product images">
+        <button class="product-thumb active">
+            <img id="thumb-1" src="" alt="">
+        </button>
+      </aside>
+
+      <div class="product-gallery">
+        <span class="product-badge" id="promo-badge" style="position:absolute;top:24px;right:24px;left:auto; display:none;">10% off</span>
+        <img id="product-image" src="assets/placeholder.jpg" alt="Loading artwork...">
+      </div>
+
+      <section class="product-info">
+        <h1 id="product-title">Loading Masterpiece...</h1>
+        
+        <div class="product-price">
+          <strong id="product-price">$0.00</strong>
+          <span class="price-original" id="display-original-price"></span>
+        </div>
+        
+        <p class="by-artist">By <a href="#">Studio Atelier</a></p>
+
+        <div class="size-options">
+          <h4>Size</h4>
+          <div class="size-buttons">
+            <button class="size-button">12" × 16"</button>
+            <button class="size-button active">18" × 24"</button>
+            <button class="size-button">24" × 32"</button>
+          </div>
+        </div>
+
+        <div class="add-to-cart">
+          <button class="btn btn-dark btn-add-to-cart" id="add-to-cart-btn">Add to Cart</button>
+          
+          <button class="wishlist-btn btn-wishlist" id="add-to-wish-btn" aria-label="Add to wishlist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" style="margin:auto;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+
+        <div class="delivery-info">
+          <h4>Estimated Arrival: <span id="arrival-date">calculating...</span></h4>
+          <div class="delivery-steps">
+            <div class="delivery-step">
+              <div class="delivery-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/></svg></div>
+              <div class="delivery-step-label">Order placed</div>
+            </div>
+            <div class="delivery-step">
+              <div class="delivery-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="delivery-step-label">Delivered</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <section class="product-description" style="max-width:1280px; margin: 40px auto; padding: 0 24px;">
+      <h2>About this artwork</h2>
+      <div id="product-description">
+        <p>Loading the artist's story and technical details...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/product-detail.js"></script>
+</body>
+</html>

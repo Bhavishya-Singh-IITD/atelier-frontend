@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | Atelier</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Albert+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .page-wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
+    .page-title { font-family: var(--font-display); font-size: 38px; font-weight: 400; margin-bottom: 6px; text-align: center; }
+    .page-sub { color: var(--color-muted); margin-bottom: 40px; font-size: 14px; text-align: center; }
+    .item-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .item-row { display: flex; gap: 20px; align-items: center; padding: 20px; border: 1px solid var(--color-line); border-radius: 4px; background: white; }
+    .item-thumb { width: 90px; height: 110px; flex-shrink: 0; border-radius: 3px; overflow: hidden; background: var(--color-cream); }
+    .item-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .item-info { flex: 1; }
+    .item-name { font-size: 18px; font-weight: 500; margin-bottom: 4px; font-family: 'Fraunces', serif; }
+    .item-price { font-size: 15px; color: var(--color-accent); font-weight: 600; margin-bottom: 14px; }
+    .cart-summary { background: var(--color-cream); border-radius: 4px; padding: 28px 32px; margin-bottom: 28px; }
+    .summary-row { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 12px; }
+    .summary-row.total { font-size: 19px; font-weight: 600; border-top: 1px solid var(--color-line); padding-top: 14px; margin-top: 10px; margin-bottom: 0; }
+    .free-tag { color: #10b981; font-weight: 600; }
+    .cart-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .cart-cta .btn { flex: 1; min-width: 180px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <script src="js/header.js"></script>
+
+  <main>
+    <div class="page-wrap">
+      <h1 class="page-title">Shopping Cart</h1>
+      <p class="page-sub">Review your items before checkout</p>
+
+      <div id="dynamic-cart-items"></div>
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>

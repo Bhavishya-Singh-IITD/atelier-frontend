@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Albert+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .auth-container { max-width: 400px; margin: 80px auto; padding: 40px; background: #fff; border: 1px solid #eee; text-align: center; }
+    .auth-title { font-family: var(--font-display); font-size: 32px; margin-bottom: 10px; }
+    .auth-form { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; text-align: left; }
+    .auth-form label { font-size: 14px; font-weight: 500; }
+    .auth-form input { padding: 12px; border: 1px solid #ddd; outline: none; font-family: inherit; }
+    .auth-form input:focus { border-color: #1a1a1a; }
+    .toggle-text { margin-top: 20px; font-size: 14px; color: #666; cursor: pointer; text-decoration: underline; }
+  </style>
+</head>
+<body style="background: var(--color-cream);">
+  
+  <script src="js/header.js"></script>
+
+  <main>
+    <div class="auth-container">
+      <h1 class="auth-title" id="form-title">Welcome Back</h1>
+      <p style="color: #666;" id="form-sub">Sign in to sync your cart and wishlist.</p>
+
+      <form class="auth-form" id="auth-form">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required placeholder="name@example.com">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" required placeholder="••••••••">
+
+        <button type="submit" class="btn btn-dark" style="margin-top: 10px;" id="submit-btn">Sign In</button>
+      </form>
+
+      <div class="toggle-text" id="toggle-form">Don't have an account? Create one.</div>
+      <p id="error-msg" style="color: #ef4444; font-size: 14px; margin-top: 15px; display: none;"></p>
+    </div>
+  </main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let isLogin = true;
+    const form = document.getElementById('auth-form');
+    const toggleBtn = document.getElementById('toggle-form');
+    const title = document.getElementById('form-title');
+    const submitBtn = document.getElementById('submit-btn');
+    const errorMsg = document.getElementById('error-msg');
+
+    toggleBtn.onclick = () => {
+      isLogin = !isLogin;
+      title.textContent = isLogin ? 'Welcome Back' : 'Create Account';
+      submitBtn.textContent = isLogin ? 'Sign In' : 'Create Account';
+      toggleBtn.textContent = isLogin ? "Don't have an account? Create one." : "Already have an account? Sign in.";
+    };
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      console.log("Form submitted!"); 
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const endpoint = isLogin ? '/user/login' : '/user/register';
+
+      // Validation check
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters!");
+        return;
+      }
+
+      try {
+        console.log(`Attempting to ${isLogin ? 'login' : 'register'}...`);
+        
+        const response = await fetch(`https://atelier-api-x7yz.onrender.com${endpoint}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+        console.log("Server Response:", data);
+
+        if (response.ok) {
+          if (isLogin) {
+            alert("Login Successful!");
+            // 🚀 NEW: Store the production token and account data securely in local memory
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('atelierToken', data.token); 
+            if (data.user) {
+              localStorage.setItem('atelierUser', JSON.stringify(data.user));
+            }
+            window.location.href = 'index.html'; 
+          } else {
+            alert("Account created successfully! You can now log in.");
+            // Switch back to login layout view automatically
+            isLogin = true;
+            title.textContent = 'Welcome Back';
+            submitBtn.textContent = 'Sign In';
+            toggleBtn.textContent = "Don't have an account? Create one.";
+            document.getElementById('password').value = '';
+            errorMsg.style.display = 'none';
+          }
+        } else {
+          errorMsg.textContent = data.message || "Failed";
+          errorMsg.style.display = 'block';
+        }
+      } catch (error) {
+        console.error("Fetch Error:", error);
+        alert("Server is not responding. Check your cloud setup pipeline!");
+      }
+    };
+  });
+</script>
+
+</body>
+</html>
